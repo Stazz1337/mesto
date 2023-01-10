@@ -1,0 +1,17 @@
+.popup__fieldset {
+  display: flex;
+  flex-direction: column;
+  max-width: 358px;
+  max-height: 209px;
+  outline: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width:640px) {
+  .popup__fieldset {
+    max-width: 238px;
+    align-items: center;
+  }
+}

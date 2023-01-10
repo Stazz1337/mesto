@@ -1,0 +1,21 @@
+.popup__container {
+  display: flex;
+  flex-direction: column;
+  width:430px;
+  height:330px;
+  position:fixed;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  border-radius: 10px;
+  background:#FFFFFF;
+  align-items: center;
+}
+
+@media (max-width:640px) {
+  .popup__container {
+    max-width: 282px;
+    height:322px;
+    transform:translate(-50%, -93%);
+  }
+}

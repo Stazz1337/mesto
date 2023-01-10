@@ -1,0 +1,17 @@
+.popup__item {
+  border: none;
+  border-bottom: 1px solid black;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+@media (max-width:640px) {
+  .popup__item {
+  min-height: 27px;
+  }
+}
+
+.popup__item:first-of-type {
+  margin-bottom: 30px;
+}

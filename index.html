@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Места России</title>
+    <link rel="stylesheet" href="./pages/index.css">
+  </head>
+
+  <body class="project">  
+    <div class="wrapper">
+      <header class="header">
+        <img src="./images/header-logo.svg" alt="Место Россия" class="header__logo">
+      </header>
+      <main class="content">
+        <section class="profile">
+          <div class="profile__avatar-wrapper">
+            <img src="./images/profile-kusto.jpg" alt="жак-ив кусто" class="profile__avatar">
+          </div>
+          <div class="profile__info">
+            <div class="profile__wrapper">
+              <h1 class="profile__title">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button link"></button>
+            </div>
+            <p class="profile__subtitle">Исследователь океана</p>
+          </div>
+          <button class="profile__add-button link"></button>
+        </section>
+
+        <section class="places">
+          <ul class="place">
+            <li>
+              <figure class="place__item">
+                <img src="./images/place-karachaevsk.jpg" alt="карачаевск" class="place__image">
+                <figcaption class="place__title-wrapper">
+                  <h2 class="place__title">Карачаевскааааааааааа</h2>
+                  <button class="place__like link place__like_active"></button>
+                </figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="place__item">
+                <img src="./images/place-karachaevsk.jpg" alt="карачаевск" class="place__image">
+                <figcaption class="place__title-wrapper">
+                  <h2 class="place__title">Карачаевск</h2>
+                  <button class="place__like link place__like_active"></button>
+                </figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="place__item">
+                <img src="./images/place-karachaevsk.jpg" alt="карачаевск" class="place__image">
+                <figcaption class="place__title-wrapper">
+                  <h2 class="place__title">Карачаевск</h2>
+                  <button class="place__like link place__like_active"></button>
+                </figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="place__item">
+                <img src="./images/place-karachaevsk.jpg" alt="карачаевск" class="place__image">
+                <figcaption class="place__title-wrapper">
+                  <h2 class="place__title">Карачаевск</h2>
+                  <button class="place__like link place__like_active"></button>
+                </figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="place__item">
+                <img src="./images/place-karachaevsk.jpg" alt="карачаевск" class="place__image">
+                <figcaption class="place__title-wrapper">
+                  <h2 class="place__title">Карачаевск</h2>
+                  <button class="place__like link place__like_active"></button>
+                </figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="place__item">
+                <img src="./images/place-karachaevsk.jpg" alt="карачаевск" class="place__image">
+                <figcaption class="place__title-wrapper">
+                  <h2 class="place__title">Карачаевск</h2>
+                  <button class="place__like link place__like_active"></button>
+                </figcaption>
+              </figure>
+            </li>
+
+          </ul>
+        </section>
+
+        <section class="popup">
+
+          <form class="popup__container">
+            <button class="popup__toggle link"></button>
+
+            <fieldset class="popup__fieldset">
+
+              <h2 class="popup__heading">Редактировать профиль</h2>
+
+              <input type="text" class="popup__item popup__item_name">
+
+              <input type="text" class="popup__item popup__item_job">
+
+              <button name="button" type="submit" class="popup__button link">Сохранить</button>
+
+            </fieldset>
+          </form>
+
+        </section>
+
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+      </footer>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
