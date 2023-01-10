@@ -7,10 +7,14 @@
   border: 0;
   line-height: 48px;
   background-image: url(../../../images/profile-edit-button.svg);
+  
 }
 
 @media (max-width:640px) {
   .profile__edit-button {
      margin-left: 10px;
+     width: 18px;
+     height: 18px;
+     background-image: url(../../../images/profile-edit-button-lowres.svg);
   }
 }

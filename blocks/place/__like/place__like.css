@@ -4,6 +4,12 @@
   height: 19px;
   border: none;
   background-color: #FFFFFF;
+  transition: 3s;
+}
+
+.place__like:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .place__like:active {
