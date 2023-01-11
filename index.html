@@ -20,11 +20,11 @@
           <div class="profile__info">
             <div class="profile__wrapper">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <button class="profile__edit-button link" type="button"></button>
+              <button class="profile__edit-button link" type="button" aria-label="редактировать"></button>
             </div>
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
-          <button class="profile__add-button link" type="button"></button>
+          <button class="profile__add-button link" type="button" aria-label="добавить"></button>
         </section>
 
         <section class="places">
@@ -95,17 +95,17 @@
 
         <div class="popup__container">
 
-          <form class="popup__form" name="edit-profile">
+          <button class="popup__close link" type="button" aria-label="закрыть"></button>
 
-            <button class="popup__close link" type="button"></button>
+          <form class="popup__form" name="edit-profile">
 
             <h2 class="popup__heading">Редактировать профиль</h2>
 
-            <input type="text" name="name" class="popup__item name">
+            <input type="text" name="name" class="popup__text popup__text_type_name" placeholder="Имя" required>
 
-            <input type="text" name="job" class="popup__item job">
+            <input type="text" name="job" class="popup__text popup__text_type_job" placeholder="Профессия" required>
 
-            <button name="button" type="submit" class="popup__button">Сохранить</button>
+            <button name="button" type="submit" class="popup__button" >Сохранить</button>
 
           </form>
 

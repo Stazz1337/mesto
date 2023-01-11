@@ -1,6 +1,6 @@
-.popup__item {
+.popup__text {
   border: none;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -8,13 +8,15 @@
   outline: none;
 }
 
+
+
 @media (max-width:640px) {
-  .popup__item {
+  .popup__text {
   min-height: 26px;
   min-width: 238px;
   }
 }
 
-.popup__item:first-of-type {
+.popup__text:first-of-type {
   margin-bottom: 30px;
 }
