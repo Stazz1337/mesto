@@ -98,7 +98,7 @@ const popup = document.querySelector('.popup');
 
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 
-const form = document.querySelector('.popup__form');
+const formEditProfile = document.querySelector('.form_type_edit-profile');
 
 const name = document.querySelector('.profile__title');
 const job = document.querySelector('.profile__subtitle');
@@ -143,7 +143,7 @@ closeButtons.forEach(function(targetButton) {
 
 
 popupOpenButton.addEventListener('click', openPopup);
-form.addEventListener('submit', handleFormSubmit);
+formEditProfile.addEventListener('submit', handleFormSubmit);
 
 ////////////////////////////////////////////////////////
 
