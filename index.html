@@ -29,60 +29,66 @@
 
         <section class="places">
           <ul class="place">
-            <li>
+            <!-- <li class="place__item-wrapper">
               <figure class="place__item">
                 <img src="./images/place-karachaevsk.jpg" alt="карачаевск" class="place__image">
+                <button class="place__delete link" type="button" aria-label="удалить"></button>
                 <figcaption class="place__title-wrapper">
                   <h2 class="place__title">Карачаевскааааааааааа</h2>
                   <button class="place__like" type="button"></button>
                 </figcaption>
               </figure>
             </li>
-            <li>
+            <li class="place__item-wrapper">
               <figure class="place__item">
                 <img src="./images/place-karachaevsk.jpg" alt="карачаевск" class="place__image">
+                <button class="place__delete link" type="button" aria-label="удалить"></button>
                 <figcaption class="place__title-wrapper">
                   <h2 class="place__title">Карачаевск</h2>
                   <button class="place__like" type="button"></button>
                 </figcaption>
               </figure>
             </li>
-            <li>
+            <li class="place__item-wrapper">
               <figure class="place__item">
                 <img src="./images/place-karachaevsk.jpg" alt="карачаевск" class="place__image">
+                <button class="place__delete link" type="button" aria-label="удалить"></button>
                 <figcaption class="place__title-wrapper">
                   <h2 class="place__title">Карачаевск</h2>
                   <button class="place__like" type="button"></button>
                 </figcaption>
               </figure>
             </li>
-            <li>
+            <li class="place__item-wrapper">
               <figure class="place__item">
                 <img src="./images/place-karachaevsk.jpg" alt="карачаевск" class="place__image">
+                <button class="place__delete link" type="button" aria-label="удалить"></button>
                 <figcaption class="place__title-wrapper">
                   <h2 class="place__title">Карачаевск</h2>
                   <button class="place__like" type="button"></button>
                 </figcaption>
               </figure>
             </li>
-            <li>
+            <li class="place__item-wrapper">
               <figure class="place__item">
                 <img src="./images/place-karachaevsk.jpg" alt="карачаевск" class="place__image">
+                <button class="place__delete link" type="button" aria-label="удалить"></button>
                 <figcaption class="place__title-wrapper">
                   <h2 class="place__title">Карачаевск</h2>
                   <button class="place__like" type="button"></button>
                 </figcaption>
               </figure>
             </li>
-            <li>
+            <li class="place__item-wrapper">
               <figure class="place__item">
                 <img src="./images/place-karachaevsk.jpg" alt="карачаевск" class="place__image">
+                <button class="place__delete link" type="button" aria-label="удалить"></button>
                 <figcaption class="place__title-wrapper">
                   <h2 class="place__title">Карачаевск</h2>
                   <button class="place__like" type="button"></button>
                 </figcaption>
               </figure>
-            </li>
+            </li> -->
 
           </ul>
         </section>
@@ -91,13 +97,13 @@
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
       </footer>
 
-      <div class="popup">
+      <div class="popup popup_type_edit-profile">
 
         <div class="popup__container">
 
           <button class="popup__close link" type="button" aria-label="закрыть"></button>
 
-          <form class="popup__form" name="edit-profile">
+          <form class="popup__form edit-profile" name="edit-profile">
 
             <h2 class="popup__heading">Редактировать профиль</h2>
 
@@ -110,8 +116,56 @@
           </form>
 
         </div>
-
       </div>
+
+        <div class="popup popup_type_add-card">
+
+          <div class="popup__container">
+
+            <button class="popup__close link" type="button" aria-label="закрыть"></button>
+
+            <form class="popup__form form_type_add-card" name="add-card">
+
+              <h2 class="popup__heading">Новое место</h2>
+
+              <input type="text" name="imageName" class="popup__text popup__text_type_imageName" placeholder="Название" required>
+
+              <input type="text" name="imageLink" class="popup__text popup__text_type_imageLink" placeholder="Ссылка на картиинку" required>
+
+              <button name="button" type="submit" class="popup__button" >Создать</button>
+
+            </form>
+
+          </div>
+        </div>
+
+        <div class="popup popup_type_image">
+
+          <div class="popup__container-image">
+
+            <button class="popup__close link" type="button" aria-label="закрыть"></button>
+
+            <img src="#" alt="" class="popup__image">
+
+            <p class="popup__image-title">ТЕСТ</p>
+
+          </div>
+
+        </div>
+
+        <template class="card-template">
+          <li class="place__item-wrapper">
+            <figure class="place__item">
+              <img src="#" alt="" class="place__image">
+              <button class="place__delete link" type="button" aria-label="удалить"></button>
+              <figcaption class="place__title-wrapper">
+                <h2 class="place__title"></h2>
+                <button class="place__like" type="button"></button>
+              </figcaption>
+            </figure>
+          </li>
+        </template>
+
     </div>
     <script src="./scripts/index.js"></script>
   </body>
