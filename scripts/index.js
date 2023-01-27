@@ -69,7 +69,7 @@ const popupAddCardOpenButton = document.querySelector('.profile__add-button');
 
 const popupAddCard = document.querySelector('.popup_type_add-card');
 
-const formAddCard = document.querySelector('.form_type_add-card');
+const formAddCard = document.querySelector('.popup__form_type_add-card');
 
 function openAddFormPopup () {
   popupAddCard.classList.add('popup_opened');
@@ -98,7 +98,7 @@ const popup = document.querySelector('.popup');
 
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 
-const formEditProfile = document.querySelector('.form_type_edit-profile');
+const formEditProfile = document.querySelector('.popup__form_type_edit-profile');
 
 const name = document.querySelector('.profile__title');
 const job = document.querySelector('.profile__subtitle');
