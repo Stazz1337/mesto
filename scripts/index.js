@@ -12,25 +12,22 @@ const nameInput = document.querySelector('.popup__text_type_name');
 const jobInput = document.querySelector('.popup__text_type_job');
 const imageNameInput = document.querySelector('.popup__text_type_imageName');
 const imageLinkInput = document.querySelector('.popup__text_type_imageLink');
-const images = document.querySelectorAll('.place__image');
 const popupImage = document.querySelector('.popup_type_image');
 const popupBackground = document.querySelector('.popup__image');
 const imageTitle = document.querySelector(".popup__image-title");
 const title =  document.querySelector('.place__title');
 const closeButtons = document.querySelectorAll('.popup__close');
-const likeButtons = document.querySelectorAll('.place__like');
-const trashButtons = document.querySelectorAll('.place__delete');
 
 // добавление карточек с массива
 
 initialCards.forEach(item => {
   const card = createCard(item.name, item.link);
-  renderCards(card);
+  renderCard(card);
 })
 
 // рендер начального массива
 
-function renderCards(card) {
+function renderCard(card) {
   list.append(card);
 }
 
@@ -66,8 +63,8 @@ function openAddFormPopup () {
  function handleFormAddCardSubmit (evt) {
   evt.preventDefault();
   addCardBegin(createCard(imageNameInput.value, imageLinkInput.value));
-  removePopup(popupAddCard);
-  this.reset();
+  closePopup(popupAddCard);
+  formAddCard.reset();
 }
 
 // открыть попап c формой edit - profile
@@ -84,7 +81,7 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
 };
 
-function removePopup (popup) {
+function closePopup (popup) {
   popup.classList.remove('popup_opened');
 };
 
@@ -94,13 +91,13 @@ function handleFormSubmit (evt, popup) {
   evt.preventDefault();
   name.textContent = nameInput.value;
   job.textContent = jobInput.value;
-  removePopup(popup);
+  closePopup(popup);
 }
 
 // закрыть на кнопку X
 
 closeButtons.forEach(function(targetButton) {
-  targetButton.addEventListener('click', evt => removePopup(evt.target.closest('.popup')))
+  targetButton.addEventListener('click', evt => closePopup(evt.target.closest('.popup')))
 });
 
 // 5. удаление карточки place__item по клику на корзину
@@ -110,10 +107,6 @@ function removeCard (event) {
   cardToDelete.remove();
 };
 
-trashButtons.forEach(function(targetButton) {
-  targetButton.addEventListener('click', removeCard)
-});
-
 //  6. открытие popup__image
 
 function openPopupImage(event){
@@ -122,10 +115,6 @@ function openPopupImage(event){
   popupBackground.alt = event.target.alt;
   imageTitle.textContent = event.target.nextElementSibling.nextElementSibling.textContent;
 }
-
-images.forEach(function(img) {
-  img.addEventListener('click', openPopupImage)
-});
 
 // кнопки открытия и сабмиты форм
 
