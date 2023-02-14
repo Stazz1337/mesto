@@ -18,6 +18,8 @@ const imageTitle = document.querySelector(".popup__image-title");
 const title =  document.querySelector('.place__title');
 const closeButtons = document.querySelectorAll('.popup__close');
 
+const popups = document.querySelectorAll('.popup');
+
 // добавление карточек с массива
 
 initialCards.forEach(item => {
@@ -58,7 +60,7 @@ function openAddFormPopup () {
   openPopup(popupAddCard);
 }
 
-// добавление карточки из формы AddCard
+// обработчик добавление карточки из формы AddCard
 
  function handleFormAddCardSubmit (evt) {
   evt.preventDefault();
@@ -89,6 +91,8 @@ function closePopup (popup) {
 
 function handleFormSubmit (evt, popup) {
   evt.preventDefault();
+  const errorFields = Array.from(document.querySelectorAll('.popup__input-error'));
+  errorFields.forEach((errorField)=>{errorField.classList.remove('popup__input-error_active')});
   name.textContent = nameInput.value;
   job.textContent = jobInput.value;
   closePopup(popup);
@@ -122,3 +126,38 @@ popupAddCardOpenButton.addEventListener('click', openAddFormPopup);
 formAddCard.addEventListener('submit', handleFormAddCardSubmit);
 popupEditProfileOpenButton.addEventListener('click', openPopupEditProfile);
 formEditProfile.addEventListener('submit', evt => handleFormSubmit(evt, popupEditProfile));
+
+// ПР-6
+// закрытие попапов на escape
+
+document.addEventListener('keydown', handlePopupCloseEscape);
+
+function handlePopupCloseEscape (evt) {
+  if (evt.key === 'Escape') {
+    const popupActive = document.querySelector('.popup_opened');
+    closePopup (popupActive);
+  };
+};
+
+// закрытие попапов по клику вне форм
+
+popups.forEach(function(targetPopup) {
+  targetPopup.addEventListener('click', handlePopupCloseOuterClick)
+});
+
+function handlePopupCloseOuterClick (evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup (evt.target);
+  };
+};
+
+// вызов данных валидации формы
+
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__text',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button:disabled',
+  inputErrorClass: 'popup__input-error',
+  errorClass: 'popup__input-error_active'
+});
