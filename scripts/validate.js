@@ -28,7 +28,10 @@ const enableValidation = (config) => {
   formsList.forEach((form) => {
     const formFields = Array.from(form.querySelectorAll(config.inputSelector));
     const buttonSubmitForm = form.querySelector(config.submitButtonSelector);
-
+    form.addEventListener('reset', () => { // собыите `reset` происходит когда вызывается `reset` у формы
+      setTimeout(() => {  // добавим таймаут, чтобы `toggleButtonState` вызвался уже после сохранения формы
+        submitButtonSwitch(formFields, buttonSubmitForm), 0 })
+    })
     formFields.forEach((inputField) => {
       const errorField = form.querySelector(`#${inputField.id} + .${config.inputErrorClass}`);
       inputField.addEventListener('input', (evt) => {

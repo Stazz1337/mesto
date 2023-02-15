@@ -16,9 +16,12 @@ const popupImage = document.querySelector('.popup_type_image');
 const popupBackground = document.querySelector('.popup__image');
 const imageTitle = document.querySelector(".popup__image-title");
 const title =  document.querySelector('.place__title');
-const closeButtons = document.querySelectorAll('.popup__close');
+/* const closeButtons = document.querySelectorAll('.popup__close'); */
 
 const popups = document.querySelectorAll('.popup');
+const errorFields = Array.from(document.querySelectorAll('.popup__input-error'));
+const inputFields = Array.from(document.querySelectorAll('.popup__text'));
+const buttonSubmitAddCard = formAddCard.querySelector('.popup_button');
 
 // добавление карточек с массива
 
@@ -58,6 +61,12 @@ function addCardBegin(card) {
 
 function openAddFormPopup () {
   openPopup(popupAddCard);
+  const inputsAreEmpty = inputFields.every((inputField) => inputField.value === '');
+  if (inputsAreEmpty) {
+    buttonSubmitAddCard.setAttribute('disabled', true);
+  } else {
+    buttonSubmitAddCard.removeAttribute('disabled');
+  }
 }
 
 // обработчик добавление карточки из формы AddCard
@@ -81,28 +90,24 @@ function openPopupEditProfile () {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', handlePopupCloseEscape);
 };
 
 function closePopup (popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', handlePopupCloseEscape);
 };
 
 // обработка сабмит формы edit - profile
 
 function handleFormSubmit (evt, popup) {
   evt.preventDefault();
-  const errorFields = Array.from(document.querySelectorAll('.popup__input-error'));
+
   errorFields.forEach((errorField)=>{errorField.classList.remove('popup__input-error_active')});
   name.textContent = nameInput.value;
   job.textContent = jobInput.value;
   closePopup(popup);
 }
-
-// закрыть на кнопку X
-
-closeButtons.forEach(function(targetButton) {
-  targetButton.addEventListener('click', evt => closePopup(evt.target.closest('.popup')))
-});
 
 // 5. удаление карточки place__item по клику на корзину
 
@@ -130,15 +135,16 @@ formEditProfile.addEventListener('submit', evt => handleFormSubmit(evt, popupEdi
 // ПР-6
 // закрытие попапов на escape
 
-document.addEventListener('keydown', handlePopupCloseEscape);
+// document.addEventListener('keydown', handlePopupCloseEscape);
 
-function handlePopupCloseEscape (evt) {
+const handlePopupCloseEscape = (evt) => {
   if (evt.key === 'Escape') {
     const popupActive = document.querySelector('.popup_opened');
     closePopup (popupActive);
   };
 };
 
+/*
 // закрытие попапов по клику вне форм
 
 popups.forEach(function(targetPopup) {
@@ -150,6 +156,26 @@ function handlePopupCloseOuterClick (evt) {
     closePopup (evt.target);
   };
 };
+
+// закрыть на кнопку X
+
+/*closeButtons.forEach(function(targetButton) {
+  targetButton.addEventListener('click', evt => closePopup(evt.target.closest('.popup')))
+});
+*/
+
+// закрытие попапов по клику вне форм и кнопке X
+
+popups.forEach((popup) => {
+    popup.addEventListener('mousedown', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup)
+        }
+        if (evt.target.classList.contains('popup__close')) {
+          closePopup(popup)
+        }
+    })
+})
 
 // вызов данных валидации формы
 
