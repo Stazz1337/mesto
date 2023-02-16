@@ -62,15 +62,13 @@ function addCardBegin(card) {
 
 function openAddFormPopup () {
   openPopup(popupAddCard);
-  submitButtonSwitch (inputFields, buttonSubmitAddCard );
-
-  /*
   const inputsAreEmpty = inputFields.every((inputField) => inputField.value.length === 0);
   if (inputsAreEmpty) {
     buttonSubmitAddCard.setAttribute('disabled', true);
-  } else {
-    buttonSubmitAddCard.removeAttribute('disabled');
-  }*/
+    /* buttonSubmitAddCard.style.backgroundColor = "#000000";
+    buttonSubmitAddCard.style.color = "#FFFFFF";
+    buttonSubmitAddCard.style.opacity = "1"; */
+  }
 }
 
 // обработчик добавление карточки из формы AddCard
