@@ -16,12 +16,13 @@ const popupImage = document.querySelector('.popup_type_image');
 const popupBackground = document.querySelector('.popup__image');
 const imageTitle = document.querySelector(".popup__image-title");
 const title =  document.querySelector('.place__title');
-/* const closeButtons = document.querySelectorAll('.popup__close'); */
+
+// const closeButtons = document.querySelectorAll('.popup__close');
 
 const popups = document.querySelectorAll('.popup');
 const errorFields = Array.from(document.querySelectorAll('.popup__input-error'));
 const inputFields = Array.from(document.querySelectorAll('.popup__text'));
-const buttonSubmitAddCard = formAddCard.querySelector('.popup_button');
+const buttonSubmitAddCard = formAddCard.querySelector('.popup__button');
 
 // добавление карточек с массива
 
@@ -61,12 +62,15 @@ function addCardBegin(card) {
 
 function openAddFormPopup () {
   openPopup(popupAddCard);
-  const inputsAreEmpty = inputFields.every((inputField) => inputField.value === '');
+  submitButtonSwitch (inputFields, buttonSubmitAddCard );
+
+  /*
+  const inputsAreEmpty = inputFields.every((inputField) => inputField.value.length === 0);
   if (inputsAreEmpty) {
     buttonSubmitAddCard.setAttribute('disabled', true);
   } else {
     buttonSubmitAddCard.removeAttribute('disabled');
-  }
+  }*/
 }
 
 // обработчик добавление карточки из формы AddCard
