@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Места России</title>
-    <link rel="stylesheet" href="./pages/index.css">
+
   </head>
 
   <body class="page">
     <div class="wrapper">
       <header class="header">
-        <img src="./images/header-logo.svg" alt="Место Россия" class="header__logo">
+        <img src="<%=require('../images/header-logo.svg')%>" alt="Место Россия" class="header__logo">
       </header>
       <main class="content">
         <section class="profile">
 
-          <img src="./images/profile-kusto.jpg" alt="жак-ив кусто" class="profile__avatar">
+          <img src="<%=require('../images/profile-kusto.jpg')%>" alt="жак-ив кусто" class="profile__avatar">
 
           <div class="profile__info">
             <div class="profile__wrapper">
@@ -114,6 +114,6 @@
         </template>
 
     </div>
-    <script defer src="./scripts/index.js" type = "module"></script>
+
   </body>
 </html>
