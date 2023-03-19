@@ -1,16 +1,20 @@
 // http://www.clck.ru/33gbDP - картинка для тест вставки
 
-import openPopup from './index.js'
+//import openPopup from './index.js'
+//import openPopup from './Popup.js'
+
+
 
 const popupImage = document.querySelector('.popup_type_image');
 const popupBackground = document.querySelector('.popup__image');
 const imageTitle = document.querySelector(".popup__image-title");
 
 export default class Card {
-  constructor(name, link, templateSelector) {
+  constructor(name, link, templateSelector, handleCardClick) {
     this._name = name;
     this._link = link;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -52,16 +56,16 @@ export default class Card {
     this._likeButton.classList.toggle('place__like_active');
   }
 
-  _openPopupImage(){
-    openPopup(popupImage);
-    popupBackground.src = this._cardImage.src;
+  /*_openPopupImage(){
+    this._handleCardClick(this._name, this._link);
+    /*popupBackground.src = this._cardImage.src;
     popupBackground.alt = this._cardImage.alt;
     imageTitle.textContent = this._cardTitle.textContent;
-  };
+  };*/
 
  _setEventListeners(){
   this._deleteButton.addEventListener('click', () => {this._removeCard()});
-  this._cardImage.addEventListener('click', () => {this._openPopupImage()});
+  this._cardImage.addEventListener('click', () => {this._handleCardClick(this._name, this._link)});
   this._likeButton.addEventListener('click', () => {this._likeCard()})
  }
 }
