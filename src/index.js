@@ -2,30 +2,27 @@
 
 import '../pages/index.css';
 
-import {initialCards, config} from "../scripts/Data.js"
-import Card from '../scripts/Card.js';
-import FormValidator from '../scripts/FormValidator.js';
-import Section from "../scripts/Section.js";
-import PopupWithImage from "../scripts/PopupWithImage.js";
-import UserInfo from "../scripts/UserInfo.js";
-import PopupWithForm from "../scripts/PopupWithForm.js";
+import {initialCards, config} from "../components/Data.js"
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import UserInfo from "../components/UserInfo.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
 import {popupImage,
-  cardsContainer,
   popupAddCardOpenButton,
   popupAddCard,
   formAddCard,
   popupEditProfileOpenButton,
   popupEditProfile,
   formEditProfile,
-  name,
-  job,
   nameInput,
   jobInput,
   imageNameInput,
   imageLinkInput,
   cardListSelector
-} from "../scripts/Data.js";
+} from "../components/Data.js";
 
 // создание карточки
 
@@ -41,7 +38,7 @@ const defaultCardList = new Section({
   items: initialCards,
   renderer: (item) => {
     const cardElement = createCard(item.name, item.link, '.card-template_type_default', handleCardClick);
-    defaultCardList.addItem(cardElement);
+    defaultCardList.addItem(cardElement, 'append');
   }
 }, cardListSelector);
 
@@ -51,24 +48,21 @@ defaultCardList.renderItems()
 
 function openAddFormPopup () {
   validatorAddCardForm.resetValidation();
-  addCardNewPopup.openPopup();
+  addCardNewPopup.open();
 }
 
 // обработчик добавление карточки из формы AddCard
 
  function handleFormAddCardSubmit () {
   const cardElement = createCard(imageNameInput.value, imageLinkInput.value, '.card-template_type_default', handleCardClick);
-  cardsContainer.prepend(cardElement);
-  addCardNewPopup.closePopup();
+  defaultCardList.addItem(cardElement, 'prepend');
+  addCardNewPopup.close();
   formAddCard.reset();
 }
 
 // открыть попап c формой edit - profile
 
 function openPopupEditProfile () {
-  /*
-  nameInput.value = name.textContent;
-  jobInput.value = job.textContent;*/
 
   const defaultValues = userInfo.getUserInfo();
 
@@ -77,20 +71,16 @@ function openPopupEditProfile () {
 
   validatorEditProfileForm.resetValidation();
 
-  editProfileNewPopup.openPopup();
+  editProfileNewPopup.open();
 };
 
 // обработка сабмит формы edit - profile
 
 function handleFormEditProfileSubmit (newValues) {
 
-  /*
-  name.textContent = nameInput.value;
-  job.textContent = jobInput.value;*/
-
   userInfo.setUserInfo(newValues.name, newValues.job);
 
-  editProfileNewPopup.closePopup();
+  editProfileNewPopup.close();
 }
 
 // кнопки открытия и сабмиты форм
@@ -124,7 +114,7 @@ popupImageNew.setEventListeners();
 // обработка клика на карточку
 
 function handleCardClick (name, link) {
-  popupImageNew.openPopup(name, link);
+  popupImageNew.open(name, link);
 }
 
 // создание экземпляра инфо формы

@@ -3,14 +3,9 @@ export default class UserInfo {
 
     this._name = document.querySelector(name);
     this._job = document.querySelector(job);
-
-    this._nameInput = document.querySelector('.popup__text_type_name');
-    this._jobInput = document.querySelector('.popup__text_type_job');
   }
 
   getUserInfo () {
-    /*this._nameInput.value = this._name.textContent;
-    this._jobInput.value = this._job.textContent;*/
 
     this._defaultValues = {
       name: this._name.textContent,

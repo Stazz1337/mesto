@@ -1,14 +1,5 @@
 // http://www.clck.ru/33gbDP - картинка для тест вставки
 
-//import openPopup from './index.js'
-//import openPopup from './Popup.js'
-
-
-
-const popupImage = document.querySelector('.popup_type_image');
-const popupBackground = document.querySelector('.popup__image');
-const imageTitle = document.querySelector(".popup__image-title");
-
 export default class Card {
   constructor(name, link, templateSelector, handleCardClick) {
     this._name = name;
@@ -55,13 +46,6 @@ export default class Card {
   _likeCard() {
     this._likeButton.classList.toggle('place__like_active');
   }
-
-  /*_openPopupImage(){
-    this._handleCardClick(this._name, this._link);
-    /*popupBackground.src = this._cardImage.src;
-    popupBackground.alt = this._cardImage.alt;
-    imageTitle.textContent = this._cardTitle.textContent;
-  };*/
 
  _setEventListeners(){
   this._deleteButton.addEventListener('click', () => {this._removeCard()});
