@@ -19,6 +19,7 @@ export default class PopupWithForm extends Popup {
      });
 
     console.log(this._fieldsValues);
+  
     return this._fieldsValues;
   }
 

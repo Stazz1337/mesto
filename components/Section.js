@@ -14,10 +14,10 @@ export default class Section {
     }
   }
 
-  renderItems() {
-    this._renderedItems.forEach(item => {
+  renderItems(items) {
+    items.forEach(item => {
      this._renderer(item);
     });
     }
-
+    
 }

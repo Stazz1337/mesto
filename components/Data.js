@@ -1,4 +1,4 @@
-export const initialCards = [
+/*export const initialCards = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -23,7 +23,7 @@ export const initialCards = [
     name: 'Байкал',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
-];
+];*/
 
 export const config = {
   formSelector: '.popup__form',
@@ -38,11 +38,18 @@ export const popupImage = document.querySelector('.popup_type_image');
 export const popupAddCardOpenButton = document.querySelector('.profile__add-button');
 export const popupAddCard = document.querySelector('.popup_type_add-card');
 export const formAddCard = document.querySelector('.popup__form_type_add-card');
+export const formUpdateAvatar = document.querySelector('.popup__form_type_update-avatar');
 export const popupEditProfileOpenButton = document.querySelector('.profile__edit-button');
 export const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 export const formEditProfile = document.querySelector('.popup__form_type_edit-profile');
 export const nameInput = document.querySelector('.popup__text_type_name');
 export const jobInput = document.querySelector('.popup__text_type_job');
-export const imageNameInput = document.querySelector('.popup__text_type_imageName');
-export const imageLinkInput = document.querySelector('.popup__text_type_imageLink');
 export const cardListSelector = '.place';
+
+export const submitButton = document.querySelector('.popup__button');
+
+export const removeCardButton = document.querySelector('.place__delete');
+
+export const popupConfirmElement = document.querySelector('.popup_type_confirm');
+export const popupUpdateAvatarElement = document.querySelector('.popup_type_update-avatar');
+export const buttonEditAvatar = document.querySelector('.profile__avatar-edit-button');
