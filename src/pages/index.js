@@ -1,9 +1,8 @@
 // http://www.clck.ru/33gbDP - картинка для тест вставки
 
-import '../pages/index.css';
+import './index.css';
 
-//import {initialCards, config} from "../components/Data.js"
-import {config} from "../components/Data.js"
+import {config} from "../utils/Data.js"
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from "../components/Section.js";
@@ -26,11 +25,10 @@ import {popupImage,
   jobInput,
   cardListSelector,
   formUpdateAvatar,
-  submitButton,
   popupConfirmElement,
   popupUpdateAvatarElement,
   buttonEditAvatar
-} from "../components/Data.js";
+} from "../utils/Data.js";
 
 let currentUserId = '';
 
@@ -57,9 +55,9 @@ function createCard(cardData, currentUserId, templateSelector, handleCardClick, 
 
 api.getUserInfo()
 .then((result) => {
-
+  console.log(result);
   userInfo.setUserInfo(result.name, result.about);
-  userInfo.setAvatar(result.avatar)
+  userInfo.setAvatar(result.avatar);
 
   currentUserId = result._id;
   }
@@ -75,12 +73,6 @@ api.getInitialCards()
 
 .then(result => {
   defaultCardList.renderItems(result)
-
-  //добавить счетчики лайков карточек
-  const likesCounts = Array.from(document.querySelectorAll('.place__count'))
-  likesCounts.forEach((p,i) => {
-  p.textContent = result[i].likes.length;
-  })
 })
 
 .catch((err) => {
@@ -111,7 +103,7 @@ function openAddFormPopup () {
 
  function handleFormAddCardSubmit (newInputValues) {
 
-  submitButton.textContent = "Сохранение";
+  addCardNewPopup.setSubmitButtonText(true)
 
   // добавить карточку на сервер
 
@@ -121,16 +113,18 @@ function openAddFormPopup () {
 
      const cardElement = createCard(res, currentUserId, '.card-template_type_default', handleCardClick, handleRemoveCardClick, putLike, deleteLike);
      defaultCardList.addItem(cardElement, 'prepend');
+     addCardNewPopup.close();
+     formAddCard.reset();
+  })
+  .then (() => {
+    addCardNewPopup.close();
+    formAddCard.reset();
+  })
 
-     submitButton.textContent = "Сохранить"})
   .catch((err) => {
     console.log(err);
-  });
-
-
-  addCardNewPopup.close();
-  formAddCard.reset();
-
+  })
+  .finally(() => addCardNewPopup.setSubmitButtonText(false) );
 }
 
 // открыть попап c формой edit - profile
@@ -151,7 +145,7 @@ function openPopupEditProfile () {
 
 function handleFormEditProfileSubmit (newValues) {
 
-  submitButton.textContent = "Сохранение";
+  editProfileNewPopup.setSubmitButtonText(true);
 
   userInfo.setUserInfo(newValues.name, newValues.job);
 
@@ -159,13 +153,15 @@ function handleFormEditProfileSubmit (newValues) {
 
   api.setUserInfo(newValues)
 
-  .then((res) => console.log(res))
-
-  .then (() => submitButton.textContent = "Сохранить")
+  .then((res) => {
+    console.log(res);
+    editProfileNewPopup.close()
+  })
 
   .catch((err) => {
-    console.log(err)});
-  editProfileNewPopup.close();
+    console.log(err)})
+
+  .finally(() => editProfileNewPopup.setSubmitButtonText(false) );
 }
 
 // кнопки открытия и сабмиты форм
@@ -245,18 +241,22 @@ function handleFormConfirmSubmit () {
 const popupUpdateAvatar = new PopupWithForm (popupUpdateAvatarElement, popupUpdateAvatarFormSubmit);
 popupUpdateAvatar.setEventListeners();
 
+
 function popupUpdateAvatarFormSubmit(newValue) {
 
-  submitButton.textContent = "Сохранение";
+  popupUpdateAvatar.setSubmitButtonText(true);
 
   api.setAvatar(newValue.imageLink)
   .then((res) => {
       userInfo.setAvatar(res.avatar);
-      popupUpdateAvatar.close()
+
     })
-    .then (() => submitButton.textContent = "Сохранить")
-    .catch((err) => {
-      console.log(err)});
+
+  .then(() => {popupUpdateAvatar.close()})
+
+  .catch((err) => {
+    console.log(err)})
+  .finally(() => popupUpdateAvatar.setSubmitButtonText(false));
 }
 
 function openPopupUpdateAvatar () {

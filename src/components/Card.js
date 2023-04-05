@@ -21,7 +21,19 @@ export default class Card {
 
     this._putLike = putLike;
     this._deleteLike = deleteLike;
+
   }
+
+  // проверка карточки был ли лайк от currentUser
+
+  isLikedByCurrentUser() {
+    this._likes.forEach(user => {
+      if (user._id === this._currentUserId) {
+      this._likeButton.classList.add('place__like_active')
+      }
+    })
+  }
+
 
   _getTemplate() {
     const cardElement = document
@@ -40,14 +52,20 @@ export default class Card {
   this._cardTitle = this._element.querySelector('.place__title');
   this._likeButton = this._element.querySelector('.place__like');
 
+  //добавить счетчики лайков карточек
+  this._likesCounterPlace =  this._element.querySelector('.place__count');
+  this._likesCounterPlace.textContent = this._likes.length;
+
   this._deleteButton = this._element.querySelector('.place__delete');
 
+  //скрыть значок удаления чужих карточек
   if (this._currentUserId !== this._cardOwnerId) {
     this._deleteButton.style.visibility = "hidden";
   }
 
   // вызов обработчики кликов
   this._setEventListeners();
+  this.isLikedByCurrentUser();
 
   // Добавим данные
   this._cardTitle.textContent = this._name;
@@ -76,10 +94,14 @@ export default class Card {
     if (!(this._likeButton.classList.contains('place__like_active'))) {
       this._putLike(this._cardId)
 
+      this._likesCounterPlace.textContent = parseInt(this._likesCounterPlace.textContent) + 1
+
       this._likeButton.classList.add('place__like_active')
     }
     else {
       this._deleteLike(this._cardId)
+
+      this._likesCounterPlace.textContent = parseInt(this._likesCounterPlace.textContent) - 1
 
       this._likeButton.classList.remove('place__like_active')
     }

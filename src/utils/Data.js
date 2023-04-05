@@ -46,8 +46,6 @@ export const nameInput = document.querySelector('.popup__text_type_name');
 export const jobInput = document.querySelector('.popup__text_type_job');
 export const cardListSelector = '.place';
 
-export const submitButton = document.querySelector('.popup__button');
-
 export const removeCardButton = document.querySelector('.place__delete');
 
 export const popupConfirmElement = document.querySelector('.popup_type_confirm');
