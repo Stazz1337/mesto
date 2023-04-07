@@ -42,8 +42,6 @@ export const formUpdateAvatar = document.querySelector('.popup__form_type_update
 export const popupEditProfileOpenButton = document.querySelector('.profile__edit-button');
 export const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 export const formEditProfile = document.querySelector('.popup__form_type_edit-profile');
-export const nameInput = document.querySelector('.popup__text_type_name');
-export const jobInput = document.querySelector('.popup__text_type_job');
 export const cardListSelector = '.place';
 
 export const removeCardButton = document.querySelector('.place__delete');
