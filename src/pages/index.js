@@ -1,5 +1,3 @@
-// http://www.clck.ru/33gbDP - картинка для тест вставки
-
 import "./index.css";
 
 import { config } from "../utils/Data.js";

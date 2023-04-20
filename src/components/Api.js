@@ -1,6 +1,5 @@
 export default class Api {
   constructor({ baseUrl, headers }) {
-    // тело конструктора
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
@@ -87,5 +86,5 @@ export default class Api {
       }),
     }).then(this._checkResponse);
   }
-  // другие методы работы с API
+
 }

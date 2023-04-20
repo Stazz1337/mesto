@@ -1,5 +1,3 @@
-// http://www.clck.ru/33gbDP - картинка для тест вставки
-
 export default class Card {
   constructor(
     cardData,
@@ -91,7 +89,7 @@ export default class Card {
   }
 
   // ставим и удаляем лайки
-  
+
   _likeCard() {
     //this._likeButton.classList.toggle('place__like_active');
 
@@ -114,7 +112,7 @@ export default class Card {
 
   _setEventListeners() {
     this._deleteButton.addEventListener("click", () => {
-      //const event = e.target;
+
       this._handleRemoveCardClick(this.getCardId(), this);
     });
 

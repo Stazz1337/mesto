@@ -1,5 +1,3 @@
-// http://www.clck.ru/33gbDP - картинка для тест вставки
-
 export default class FormValidator {
   constructor(config, formElement) {
     this._config = config;
