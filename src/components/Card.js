@@ -10,20 +10,13 @@ export default class Card {
   ) {
     this._name = cardData.name;
     this._link = cardData.link;
-
     this._likes = cardData.likes;
-
     this._cardId = cardData._id;
-
     this._cardOwnerId = cardData.owner._id;
-
     this._currentUserId = currentUserId;
-
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
-
     this._handleRemoveCardClick = handleRemoveCardClick;
-
     this._putLike = putLike;
     this._deleteLike = deleteLike;
   }
@@ -83,6 +76,8 @@ export default class Card {
     return this._cardId;
   }
 
+  // удалить карточку
+
   removeCard() {
     this._element.remove();
     this._element = null;
@@ -112,7 +107,6 @@ export default class Card {
 
   _setEventListeners() {
     this._deleteButton.addEventListener("click", () => {
-
       this._handleRemoveCardClick(this.getCardId(), this);
     });
 

@@ -54,10 +54,9 @@ export default class FormValidator {
   // сброс валидации
 
   resetValidation() {
-    this._switchSubmitButtonState(); // <== управляем кнопкой ==
-
+    this._switchSubmitButtonState();
     this._formFields.forEach((inputElement) => {
-      this._hideInputError(inputElement); // <==очищаем ошибки ==
+      this._hideInputError(inputElement);
     });
   }
 
@@ -65,7 +64,7 @@ export default class FormValidator {
 
   enableValidation() {
     /*this._form.addEventListener('reset', () => { // собыите `reset` происходит когда вызывается `reset` у формы
-      setTimeout(() => {  // добавим таймаут, чтобы `toggleButtonState` вызвался уже после сохранения формы
+      setTimeout(() => {  // добавить таймаут, чтобы `toggleButtonState` вызвался уже после сохранения формы
         this._switchSubmitButtonState(), 0 })
     })*/
 

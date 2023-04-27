@@ -1,5 +1,4 @@
 import "./index.css";
-
 import { config } from "../utils/Data.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
@@ -7,7 +6,6 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-
 import Api from "../components/Api.js";
 import PopupConfirm from "../components/PopupConfirm.js";
 
@@ -28,7 +26,7 @@ import {
 
 let currentUserId = "";
 
-//api
+// api
 
 const api = new Api({
   baseUrl: "https://mesto.nomoreparties.co/v1/cohort-63",
@@ -65,12 +63,9 @@ function createCard(
 // получить карточки, данные профайла и аватара с сервера
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
-  // тут деструктурируете ответ от сервера, чтобы было понятнее, что пришло
   .then(([userData, cards]) => {
     userInfo.setUserInfo(userData);
-
     currentUserId = userData._id;
-
     defaultCardList.renderItems(cards);
   })
   .catch((err) => {
@@ -107,14 +102,10 @@ function openAddFormPopup() {
 
 function handleFormAddCardSubmit(newInputValues) {
   addCardNewPopup.setSubmitButtonText(true);
-
   // добавить карточку на сервер
-
   api
     .postCardServer(newInputValues)
     .then((res) => {
-      console.log(res);
-
       const cardElement = createCard(
         res,
         currentUserId,
@@ -141,9 +132,7 @@ function openPopupEditProfile() {
   aboutInput.value = defaultValues.about;*/
 
   editProfileNewPopup.setInputValues(userInfo.getUserInfo());
-
   validatorEditProfileForm.resetValidation();
-
   editProfileNewPopup.open();
 }
 
@@ -156,17 +145,14 @@ function handleFormEditProfileSubmit(newValues) {
 
   api
     .setUserInfo(newValues)
-
     .then((res) => {
       console.log(res);
       userInfo.setUserInfo(res);
       editProfileNewPopup.close();
     })
-
     .catch((err) => {
       console.log(err);
     })
-
     .finally(() => editProfileNewPopup.setSubmitButtonText(false));
 }
 
@@ -178,15 +164,12 @@ popupEditProfileOpenButton.addEventListener("click", openPopupEditProfile);
 // создание классов валидации форм
 
 const validatorEditProfileForm = new FormValidator(config, formEditProfile);
-
 validatorEditProfileForm.enableValidation();
 
 const validatorAddCardForm = new FormValidator(config, formAddCard);
-
 validatorAddCardForm.enableValidation();
 
 const validatorformUpdateAvatar = new FormValidator(config, formUpdateAvatar);
-
 validatorformUpdateAvatar.enableValidation();
 
 // создание попапов форм и установка обработчиков
@@ -244,7 +227,6 @@ function handleFormConfirmSubmit() {
     .deleteCard(cardId)
     .then(() => {
       popupConfirm.close();
-      //event.closest(".place__item-wrapper").remove();
       newCardElement.removeCard();
     })
     .catch((err) => {
@@ -268,11 +250,9 @@ function popupUpdateAvatarFormSubmit(newValue) {
     .then((res) => {
       userInfo.setUserInfo(res);
     })
-
     .then(() => {
       popupUpdateAvatar.close();
     })
-
     .catch((err) => {
       console.log(err);
     })
